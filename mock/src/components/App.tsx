@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../styles/App.css';
+import { PAGE_TITLE } from './Constants';
 import { LoginButton } from './LoginButton';
 import REPL from './REPL';
 
@@ -12,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <p className="App-header">
-        <h1>Mock</h1>
+        <h1>{PAGE_TITLE}</h1>
         <LoginButton isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       </p>
 

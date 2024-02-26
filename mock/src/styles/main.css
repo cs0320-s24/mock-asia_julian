@@ -13,7 +13,9 @@
     height:55vh;   
     margin: auto;
     display: block;
-    overflow: scroll;    
+    overflow: scroll;   
+    background-color: #b3284a;
+    border-radius: 10px; 
 }
 
 .repl-input {        
@@ -24,8 +26,22 @@
     width: 90%;            
     margin: auto;
     display: block;
+    border-radius: 5px;
+    background-color: #b3284a;
+    padding: 5px;
+    border-color: white;
+    
 }
 button{
     margin: auto;
     display: block;
+}
+input{
+    color: white;
+    border-color: white;
+    
+}
+input::placeholder{
+    color:white;
+    padding-left: 5px;
 }

@@ -1,0 +1,2 @@
+export const REPL_BOX_PROMPT = "Enter Command   |   TO LOAD A FILE >> load_file <csv-file-path>   |   TO SEARCH A FILE >> search <column> <value>   |   TO VIEW A FILE >> view"
+export const PAGE_TITLE = "CSVinator3200"

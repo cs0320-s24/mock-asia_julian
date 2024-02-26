@@ -1,6 +1,7 @@
 import '../styles/main.css';
 import { Dispatch, SetStateAction, useState} from 'react';
 import { ControlledInput } from './ControlledInput';
+import { REPL_BOX_PROMPT } from './Constants';
 
 interface REPLInputProps{
   // TODO: Fill this with desired props... Maybe something to keep track of the submitted commands
@@ -37,11 +38,11 @@ export function REPLInput(props : REPLInputProps) {
             into a single unit, which makes it easier for screenreaders to navigate. */}
             <fieldset>
               <legend>Enter a command:</legend>
-              <ControlledInput value={commandString} setValue={setCommandString} ariaLabel={"Command input"}/>
+              <ControlledInput value={commandString} setValue={setCommandString} ariaLabel={'Command Prompt'}/>
             </fieldset>
             {/* TODO WITH TA: Build a handleSubmit function that increments count and displays the text in the button */}
             {/* TODO: Currently this button just counts up, can we make it push the contents of the input box to the history?*/}
-            <button onClick={handleSubmit}>Submit has happened {counter} times!</button>
+            <button onClick={handleSubmit}> Submit Command! </button>
         </div>
     );
   }

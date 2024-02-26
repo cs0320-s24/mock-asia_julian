@@ -1,14 +1,19 @@
 .App {
   text-align: center;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 10px;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color:white;
   min-height: 8vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(1px + 2vmin);
-  color: white;
+  color: #ff99bb;
+  padding-bottom: 25px;
+  border-radius: 50px;
 }

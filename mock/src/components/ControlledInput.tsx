@@ -1,5 +1,6 @@
 import '../styles/main.css';
 import { Dispatch, SetStateAction } from 'react';
+import { REPL_BOX_PROMPT } from './Constants';
 
 // Remember that parameter names don't necessarily need to overlap;
 // I could use different variable names in the actual function.
@@ -17,7 +18,7 @@ interface ControlledInputProps {
     return (
       <input type="text" className="repl-command-box"
             value={value} 
-            placeholder="Enter command here!"
+            placeholder={REPL_BOX_PROMPT}
             onChange={(ev) => setValue(ev.target.value)}
             aria-label={ariaLabel}>
       </input>

@@ -25,7 +25,7 @@ export default function REPL() {
       component or somewhere else depending on your component organization. What are the pros and cons of each? */}
       {/* TODO: Update your REPLHistory and REPLInput to take in new shared state as props */}
       <REPLHistory commands={myCommands}/>
-      <hr></hr>
+      <div className="spacer"></div>
       <REPLInput commands={myCommands} setCommands={setCommands}/>
     </div>
   );

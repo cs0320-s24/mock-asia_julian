@@ -10,7 +10,7 @@ export function REPLHistory(props : REPLHistoryProps) {
             {/* This is where command history will go */}
             {/* TODO: To go through all the pushed commands... try the .map() function! */}
             {props.commands.map((item, index) => (
-                <text>{item}<br></br></text>
+                <text className="history-item">{item}<br></br></text>
             ))}
         </div>
     );

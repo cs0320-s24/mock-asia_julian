@@ -16,7 +16,14 @@
     display: block;
     overflow: scroll;   
     background-color: #b3284a;
-    border-radius: 10px; 
+    border-radius: 20px; 
+    border-color: #ff99bb;
+    border-width: 5px;
+    border-style: solid;
+}
+
+.history-item{
+    font-weight: bold;
 }
 
 .repl-input {        

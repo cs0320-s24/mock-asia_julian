@@ -4,7 +4,6 @@ import { ControlledInput } from './ControlledInput';
 import { COMMAND_BOX_LEGEND, REPL_BOX_PROMPT } from './Constants';
 
 interface REPLInputProps{
-  // TODO: Fill this with desired props... Maybe something to keep track of the submitted commands
   commands: string[];
   setCommands: Dispatch<SetStateAction<string[]>>
 }
@@ -14,22 +13,29 @@ export function REPLInput(props : REPLInputProps) {
     // Remember: let React manage state in your webapp. 
     // Manages the contents of the input box
     const [commandString, setCommandString] = useState<string>('');
-    // TODO WITH TA : add a count state
-    const [counter, setCounter] = useState<number>(0);
+
     
-    // TODO WITH TA: build a handleSubmit function called in button onClick
     function handleSubmit(){
-      setCounter(counter + 1);
-      const newList = [...props.commands, commandString];
-      props.setCommands(newList);
-      setCommandString("")
+      if (!isStringAllSpaces(commandString)){
+        const newList = [...props.commands, commandString];
+        props.setCommands(newList);
+        setCommandString("")
+      }
     }
-    // TODO: Once it increments, try to make it push commands... Note that you can use the `...` spread syntax to copy what was there before
-    // add to it with new commands.
+
     /**
-     * We suggest breaking down this component into smaller components, think about the individual pieces 
-     * of the REPL and how they connect to each other...
+     * Function uses a regex to check if the string contains all spaces.
+     * 
+     * Credit to ChatGPT.
+     * 
+     * @param str is the string to check.
+     * @returns true if all spaces, false otherwise.
      */
+    function isStringAllSpaces(str: string): boolean {
+      // Use a regular expression to check if the string consists only of whitespace characters.
+      return /^\s*$/.test(str);
+  }
+    
     return (
         <div className="repl-input">
             {/* This is a comment within the JSX. Notice that it's a TypeScript comment wrapped in

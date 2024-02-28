@@ -1,10 +1,12 @@
 import "../styles/main.css";
 import { useState } from "react";
 import { MockedSource } from "./MockedSource";
+import { REPLFunction } from "./REPLFunction";
 
 interface REPLHistoryProps {
   commands: string[][];
   mode: string;
+  functions: {[key: string]: REPLFunction}
 }
 export function REPLHistory(props: REPLHistoryProps) {
   if (props.mode == "brief") {
@@ -12,7 +14,7 @@ export function REPLHistory(props: REPLHistoryProps) {
       <div className="repl-history">
         {props.commands.map((item, index) => (
           <div>
-            <MockedSource command={item}/>
+            <MockedSource command={item} functions={props.functions}/>
           </div>
         ))}
       </div>
@@ -31,7 +33,10 @@ export function REPLHistory(props: REPLHistoryProps) {
             Output:
             <br></br>
           </text>
-          <MockedSource command={item}/>
+          <MockedSource command={item} functions={props.functions}/>
+          <br></br>
+          <text>------------------------</text>
+          
           </div>
         ))}
       </div>

@@ -1,39 +1,35 @@
 import "../styles/main.css";
 import { useState } from "react";
 import { MOCK_CSV_1 } from "./Constants";
+import { REPLFunction } from "./REPLFunction";
 
 interface MockedProps {
     command: string[];
+    functions: {[key: string]: REPLFunction}
 }
 
 export function MockedSource(props: MockedProps) {
-    const myDict: { [key: string]: any } = {
-        "partners.csv": MOCK_CSV_1,
-      };
-
     const [currentCSV, setCurrentCSV] = useState<string[][]>();
 
-    // commands[0] contains a string like "load csv.csv"
-    function parseCommand(){
+    if (props.functions[props.command[0]] != null) {
+        const result = props.functions[props.command[0]](props.command);
 
-    }
-
-    if (props.command[0] == "load") {
-        //setCurrentCSV(myDict['partners.csv'])
-        return (
-            <text>Tried to load {props.command[1]} lowkey.</text>
+        if (typeof result === 'string') {
+            return (
+                <text>{result}</text>
+                );
+        }
+        else {
+            // it is an array of strings
+            return (
+                <text>A stylized array will go here!</text>
             );
-    }
-
-    if (props.command[0] == "view") {
-        return (
-            <text>{MOCK_CSV_1}</text>
-            );
+        }
     }
 
     else{
         return (
-            <text>Tried to do something else lowkey.</text>
+            <text>Command not found.</text>
         );
     }
 }

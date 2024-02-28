@@ -1,5 +1,6 @@
 import "../styles/main.css";
 import { useState } from "react";
+import { MockedSource } from "./MockedSource";
 
 interface REPLHistoryProps {
   commands: string[][];
@@ -10,10 +11,9 @@ export function REPLHistory(props: REPLHistoryProps) {
     return (
       <div className="repl-history">
         {props.commands.map((item, index) => (
-          <text className="history-item">
-            {item[1]}
-            <br></br>
-          </text>
+          <div>
+            <MockedSource command={item}/>
+          </div>
         ))}
       </div>
     );
@@ -21,10 +21,18 @@ export function REPLHistory(props: REPLHistoryProps) {
     return (
       <div className="repl-history">
         {props.commands.map((item, index) => (
+          <div>
           <text className="history-item">
-            {item}
+            Command: 
+            {item.map((word, index) => (
+              <text> {word}</text>
+            ))}
+            <br></br>
+            Output:
             <br></br>
           </text>
+          <MockedSource command={item}/>
+          </div>
         ))}
       </div>
     );

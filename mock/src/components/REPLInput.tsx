@@ -28,7 +28,7 @@ export function REPLInput(props: REPLInputProps) {
       setModeCommand();
       const newList = [
         ...props.commands,
-        ["command: " + "<"+commandString+">", " <output>"]];
+        commandString.split(" ")];
       props.setCommands(newList);
       setCommandString("");
     }

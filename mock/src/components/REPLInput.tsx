@@ -14,22 +14,28 @@ interface REPLInputProps {
 export function REPLInput(props: REPLInputProps) {
   const [commandString, setCommandString] = useState<string>("");
 
-  function setModeCommand() {
+  function setModeCommand(): boolean {
     if (commandString == "mode brief") {
       props.setMode("brief");
+      return true;
     }
     if (commandString == "mode verbose") {
       props.setMode("verbose");
+      return true;
     }
+    return false;
   }
 
   function handleSubmit() {
     if (!isStringAllSpaces(commandString)) {
-      setModeCommand();
-      const newList = [
-        ...props.commands,
-        commandString.split(" ")];
-      props.setCommands(newList);
+      // dont update commands it it was a mode change
+      if (!setModeCommand()){
+        const newList = [
+          ...props.commands,
+          commandString.split(" ")];
+        props.setCommands(newList);
+      }
+
       setCommandString("");
     }
   }

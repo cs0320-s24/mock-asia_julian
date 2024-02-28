@@ -1,6 +1,5 @@
 import "../styles/main.css";
 import { useState } from "react";
-import { MOCK_CSV_1 } from "./Constants";
 import { REPLFunction } from "./REPLFunction";
 
 interface MockedProps {

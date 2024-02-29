@@ -2,29 +2,31 @@ import "../styles/main.css";
 import { Dispatch, SetStateAction, useState } from "react";
 import { ControlledInput } from "./ControlledInput";
 import { COMMAND_BOX_LEGEND, REPL_BOX_PROMPT } from "./Constants";
+import { Functions } from "./Functions";
 
 
 interface REPLInputProps {
-  commands: string[][];
-  setCommands: Dispatch<SetStateAction<string[][]>>;
+  commands: [string, string | string[][]][];
+  setCommands: Dispatch<SetStateAction<[string, string | string[][]][]>>;
   mode: string;
   setMode: Dispatch<SetStateAction<string>>;
 }
 
 export function REPLInput(props: REPLInputProps) {
   const [commandString, setCommandString] = useState<string>("");
+  const functionMap = Functions();
 
-  function setModeCommand(): string {
-    if (commandString == "mode brief") {
+
+  function setModeCommand(mode: string[]): boolean {
+    if (mode[0] == "brief") {
       props.setMode("brief");
-      return "mode succesfully changed to brief"
+      return true;
     }
-    if (commandString == "mode verbose") {
+    if (mode[0] == "verbose") {
       props.setMode("verbose");
-      return "mode succesfully changed to verbose";
-    } else {
-      return "";
+      return true;
     }
+    return false;
   }
 
   function load() {
@@ -41,15 +43,27 @@ export function REPLInput(props: REPLInputProps) {
   }
 
   function handleSubmit() {
-    if (!isStringAllSpaces(commandString)) {
-      const modeStatement = setModeCommand();
-      const newList = [
-        ...props.commands,
-        ["command: " + "<" + commandString + ">", " <output>"]
-      ];
-      props.setCommands(newList);
-      setCommandString("");
+    const commandInput = commandString.trim().split(" ");
+    const command = commandInput[0];
+    const commandArgs = commandInput.slice(1);
+
+    if (command == undefined) {
+      props.setCommands([...props.commands, [command, "Invalid command"]]);
+    } else {
+      if (functionMap.get(command) != undefined) {
+        const result = functionMap.get(command)(commandArgs);
+        props.setCommands([...props.commands, [command, result]]);
+      } else if (command == "mode") {
+        setModeCommand(commandArgs);
+        props.setCommands([...props.commands, [command, "Mode has been changed to " + commandArgs[0]]])
+       
+      }
+      else {
+        props.setCommands([...props.commands, [command, "Command not found."]]);
+        
+      }
     }
+      setCommandString("");
   }
   /**
    * Function uses a regex to check if the string contains all spaces.

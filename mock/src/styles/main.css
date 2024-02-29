@@ -71,7 +71,6 @@ fieldset{
     border-color: white;
     border-width: 6px;
     border-style: double;
-    background-color: ;
 }
 legend{
     font-weight: bold;
@@ -83,4 +82,48 @@ legend{
 hr{
     border-width:  10px;
     border-style: solid;
+}
+
+/* Table container */
+.table-container {
+    padding-top: 10px;
+    padding-bottom: 0px;
+    width: 80%; /* Adjust width as needed */
+    margin: 0 auto; /* Center the table horizontally */
+}
+  
+  /* Table */
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+  
+  /* Table rows */
+.table-container tr:nth-child(even) {
+    background-color: #53102b; /* Alternating row color */
+}
+.table-container tr:nth-child(odd) {
+    background-color: #a60f35; /* Alternating row color */
+}
+  
+  /* Table cells */
+.table-container td,
+.table-container th {
+    padding: 8px;
+    text-align: left;
+    border-radius: 10px; /* Rounded edges */
+    border-style: solid;
+    border-width: 0cm;
+    border-color: #e0e0e0; /* Hover row color */
+
+}
+  
+  /* Header cells */
+.table-container th {
+    background-color: #ffccee; /* Header row background color */
+}
+  
+  /* Hover effect */
+.table-container tr:hover {
+    background-color: #3b0919;
 }

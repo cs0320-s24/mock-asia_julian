@@ -2,6 +2,8 @@ import { useState } from 'react';
 import '../styles/main.css';
 import { REPLHistory } from './REPLHistory';
 import { REPLInput } from './REPLInput';
+import { REPLFunction } from './REPLFunction';
+import { Functions } from './Functions';
 
 /* 
   You'll want to expand this component (and others) for the sprints! Remember 
@@ -12,20 +14,27 @@ import { REPLInput } from './REPLInput';
   You don't need to do that for this gearup.
 */
 
+/**
+ * This function defines which functions are available to use in the scope of this repl.
+ * 
+ * @returns a map of the functions available for use.
+ */
+
+
+
 export default function REPL() {
-  // TODO: Add some kind of shared state that holds all the commands submitted.
 
-  const [myCommands, setCommands] = useState<string[][]>([])
+  const [myCommands, setCommands] = useState<[string, string | string[][]][]>([]);
   const [mode, setMode] = useState<string>('brief');
+  const functions = Functions();
 
-  //RUN WITH NPM START
 
   return (
     <div className="repl">  
       {/*This is where your REPLHistory might go... You also may choose to add it within your REPLInput 
       component or somewhere else depending on your component organization. What are the pros and cons of each? */}
       {/* TODO: Update your REPLHistory and REPLInput to take in new shared state as props */}
-      <REPLHistory commands={myCommands} mode = {mode}/>
+      <REPLHistory commands={myCommands} mode={mode} functions={functions}/>
       <div className="spacer"></div>
       <REPLInput commands={myCommands} setCommands={setCommands} mode={mode} setMode={setMode}/>
     </div>

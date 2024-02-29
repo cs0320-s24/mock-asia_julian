@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { ControlledInput } from "./ControlledInput";
 import { COMMAND_BOX_LEGEND, REPL_BOX_PROMPT } from "./Constants";
 
-//2d array first array hold command: command second hold output only index into one or both for brief and verbose
+
 interface REPLInputProps {
   commands: string[][];
   setCommands: Dispatch<SetStateAction<string[][]>>;
@@ -14,29 +14,45 @@ interface REPLInputProps {
 export function REPLInput(props: REPLInputProps) {
   const [commandString, setCommandString] = useState<string>("");
 
-  function setModeCommand() {
+  function setModeCommand(): string {
     if (commandString == "mode brief") {
       props.setMode("brief");
+      return "mode succesfully changed to brief"
     }
     if (commandString == "mode verbose") {
       props.setMode("verbose");
+      return "mode succesfully changed to verbose";
+    } else {
+      return "";
     }
+  }
+
+  function load() {
+    const file = props.commands[0][1];
+    return (
+      <div className="repl-history">
+        <text className="history-item">
+          {commandString}
+        </text>
+
+      </div>
+    )
+    //get mapped dataset
   }
 
   function handleSubmit() {
     if (!isStringAllSpaces(commandString)) {
-      setModeCommand();
+      const modeStatement = setModeCommand();
       const newList = [
         ...props.commands,
-        ["command: " + "<"+commandString+">", " <output>"]];
+        ["command: " + "<" + commandString + ">", " <output>"]
+      ];
       props.setCommands(newList);
       setCommandString("");
     }
   }
   /**
    * Function uses a regex to check if the string contains all spaces.
-   *
-   * Credit to ChatGPT.
    *
    * @param str is the string to check.
    * @returns true if all spaces, false otherwise.
@@ -48,10 +64,6 @@ export function REPLInput(props: REPLInputProps) {
 
   return (
     <div className="repl-input">
-      {/* This is a comment within the JSX. Notice that it's a TypeScript comment wrapped in
-            braces, so that React knows it should be interpreted as TypeScript */}
-      {/* I opted to use this HTML tag; you don't need to. It structures multiple input fields
-            into a single unit, which makes it easier for screenreaders to navigate. */}
       <fieldset>
         <legend>{COMMAND_BOX_LEGEND}</legend>
         <ControlledInput
@@ -60,9 +72,9 @@ export function REPLInput(props: REPLInputProps) {
           ariaLabel={"Command Prompt"}
         />
       </fieldset>
-      <div className="spacer"></div>
+      <div className="spacer">
+      </div>
       <button onClick={handleSubmit}> Submit Command! </button>
     </div>
-    
   );
 }

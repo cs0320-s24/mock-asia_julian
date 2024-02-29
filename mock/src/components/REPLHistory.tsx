@@ -34,7 +34,6 @@ export function REPLHistory(props: REPLHistoryProps) {
             <br></br>
           </text>
           <MockedSource command={item} functions={props.functions}/>
-          <br></br>
           <text>------------------------</text>
           
           </div>

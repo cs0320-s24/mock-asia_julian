@@ -11,17 +11,28 @@ export function MockedSource(props: MockedProps) {
     const [currentCSV, setCurrentCSV] = useState<string[][]>();
 
     if (props.functions[props.command[0]] != null) {
-        const result = props.functions[props.command[0]](props.command);
 
-        if (typeof result === 'string') {
+        if (typeof props.functions[props.command[0]](props.command) === 'string') {
             return (
-                <text>{result}</text>
+                <div>
+                <text>{props.functions[props.command[0]](props.command)}</text>
+                </div>
                 );
         }
         else {
             // it is an array of strings
             return (
-                <text>A stylized array will go here!</text>
+                <div className="table-container">
+                <table>
+                    {(props.functions[props.command[0]](props.command) as string[][]).map((item) => (
+                        <tr>
+                            {item.map((datum) => (
+                                <td>{datum}</td>
+                            ))}
+                        </tr>
+                    ))}
+                </table>
+                </div>
             );
         }
     }

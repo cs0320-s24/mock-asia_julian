@@ -1,6 +1,6 @@
-import { MOCK_CSV_1, MOCK_CSV_2 } from "./Constants";
-import { REPLFunction } from "./REPLFunction";
-import { loadCSVs, searchCSVs } from "./MockedCSVs";
+import { MOCK_CSV_1, MOCK_CSV_2 } from "../MockedData/Constants";
+import { REPLFunction } from "../REPLClasses/REPLFunction";
+import { loadCSVs, searchCSVs } from "../MockedData/MockedCSVs";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -31,28 +31,26 @@ export function Functions() {
     if (args[0] == undefined) {
       return "Value was not specified";
     } else {
-        if (args[1] == undefined) {
-            if (args[0] == "unfoundValue") {
-              return searchCSV.get("unfoundValue.csv");
-            } else if (file == "malformed.csv") {
-                return "Unable to search due to malformed rows."
-            }
-            else {
-            return searchCSV.get("rowWithoutHeaders.csv");
-            }
+      if (args[1] == undefined) {
+        if (args[0] == "unfoundValue") {
+          return searchCSV.get("unfoundValue.csv");
+        } else if (file == "malformed.csv") {
+          return "Unable to search due to malformed rows.";
         } else {
-            if (
-                parseInt(args[1]) < 0 ||
-                parseInt(args[1]) > loadCSV.get(file)[0].length
-            ) {
-                return "Column is out of range.";
-            } else {
-                return searchCSV.get("rowWithoutHeaders.csv");
-          }
+          return searchCSV.get("rowWithoutHeaders.csv");
+        }
+      } else {
+        if (
+          parseInt(args[1]) < 0 ||
+          parseInt(args[1]) > loadCSV.get(file)[0].length
+        ) {
+          return "Column is out of range.";
+        } else {
+          return searchCSV.get("rowWithoutHeaders.csv");
+        }
       }
     }
   };
-
 
   myFunction.set("load", loadFunction);
   myFunction.set("view", viewFunction);

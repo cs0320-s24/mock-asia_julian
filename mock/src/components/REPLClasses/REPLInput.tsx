@@ -1,9 +1,8 @@
 import "../styles/main.css";
 import { Dispatch, SetStateAction, useState } from "react";
-import { ControlledInput } from "./ControlledInput";
-import { COMMAND_BOX_LEGEND, REPL_BOX_PROMPT } from "./Constants";
-import { Functions } from "./Functions";
-
+import { ControlledInput } from "../ControlledInput";
+import { COMMAND_BOX_LEGEND, REPL_BOX_PROMPT } from "../MockedData/Constants";
+import { Functions } from "../BackendFunctionality/Functions";
 
 interface REPLInputProps {
   commands: [string, string | string[][]][];
@@ -16,7 +15,6 @@ export function REPLInput(props: REPLInputProps) {
   const [commandString, setCommandString] = useState<string>("");
   const functionMap = Functions();
 
-
   function setModeCommand(mode: string[]): boolean {
     if (mode[0] == "brief") {
       props.setMode("brief");
@@ -28,7 +26,6 @@ export function REPLInput(props: REPLInputProps) {
     }
     return false;
   }
-
 
   function handleSubmit() {
     const commandInput = commandString.trim().split(" ");
@@ -43,19 +40,21 @@ export function REPLInput(props: REPLInputProps) {
         props.setCommands([...props.commands, [command, result]]);
       } else if (command == "mode") {
         if (setModeCommand(commandArgs)) {
-           props.setCommands([
-             ...props.commands, [command, "Mode has been changed to " + commandArgs[0]]]);
+          props.setCommands([
+            ...props.commands,
+            [command, "Mode has been changed to " + commandArgs[0]],
+          ]);
         } else {
-          props.setCommands([...props.commands,[command, "Mode specified does not exist."]]);
+          props.setCommands([
+            ...props.commands,
+            [command, "Mode specified does not exist."],
+          ]);
         }
-       
-      }
-      else {
+      } else {
         props.setCommands([...props.commands, [command, "Command not found."]]);
-        
       }
     }
-      setCommandString("");
+    setCommandString("");
   }
   /**
    * Function uses a regex to check if the string contains all spaces.
@@ -78,8 +77,7 @@ export function REPLInput(props: REPLInputProps) {
           ariaLabel={"Command Prompt"}
         />
       </fieldset>
-      <div className="spacer">
-      </div>
+      <div className="spacer"></div>
       <button onClick={handleSubmit}> Submit Command! </button>
     </div>
   );

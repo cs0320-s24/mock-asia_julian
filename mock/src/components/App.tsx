@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import '../styles/App.css';
-import { PAGE_TITLE } from './Constants';
-import { LoginButton } from './LoginButton';
-import REPL from './REPL';
+import { useState } from "react";
+import "../styles/App.css";
+import { PAGE_TITLE } from "./MockedData/Constants";
+import { LoginButton } from "./LoginButton";
+import REPL from "./REPLClasses/REPL";
 
 /**
  * This is the highest level component!
@@ -17,7 +17,7 @@ function App() {
         <LoginButton isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       </p>
 
-      { isLoggedIn && <REPL /> }
+      {isLoggedIn && <REPL />}
     </div>
   );
 }

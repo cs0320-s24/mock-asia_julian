@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import '../styles/main.css';
-import { REPLHistory } from './REPLHistory';
-import { REPLInput } from './REPLInput';
-import { REPLFunction } from './REPLFunction';
-import { Functions } from './Functions';
+import { useState } from "react";
+import "../styles/main.css";
+import { REPLHistory } from "./REPLHistory";
+import { REPLInput } from "./REPLInput";
+import { REPLFunction } from "./REPLFunction";
+import { Functions } from "../BackendFunctionality/Functions";
 
 /* 
   You'll want to expand this component (and others) for the sprints! Remember 
@@ -16,27 +16,30 @@ import { Functions } from './Functions';
 
 /**
  * This function defines which functions are available to use in the scope of this repl.
- * 
+ *
  * @returns a map of the functions available for use.
  */
 
-
-
 export default function REPL() {
-
-  const [myCommands, setCommands] = useState<[string, string | string[][]][]>([]);
-  const [mode, setMode] = useState<string>('brief');
+  const [myCommands, setCommands] = useState<[string, string | string[][]][]>(
+    []
+  );
+  const [mode, setMode] = useState<string>("brief");
   const functions = Functions();
 
-
   return (
-    <div className="repl">  
+    <div className="repl">
       {/*This is where your REPLHistory might go... You also may choose to add it within your REPLInput 
       component or somewhere else depending on your component organization. What are the pros and cons of each? */}
       {/* TODO: Update your REPLHistory and REPLInput to take in new shared state as props */}
-      <REPLHistory commands={myCommands} mode={mode} functions={functions}/>
+      <REPLHistory commands={myCommands} mode={mode} functions={functions} />
       <div className="spacer"></div>
-      <REPLInput commands={myCommands} setCommands={setCommands} mode={mode} setMode={setMode}/>
+      <REPLInput
+        commands={myCommands}
+        setCommands={setCommands}
+        mode={mode}
+        setMode={setMode}
+      />
     </div>
   );
 }

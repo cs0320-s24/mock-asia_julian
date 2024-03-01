@@ -5,16 +5,25 @@ import { REPLFunction } from "./REPLFunction";
  * A class that represents the REPL history.
  */
 
+// Includes the commands, view mode, and functions map.
 interface REPLHistoryProps {
   commands: [string, string | string[][]][];
   mode: string;
   functions: Map<string, REPLFunction>;
 }
 
+/**
+ * Handles the generation and formatting of the REPLHistory element which contains
+ * the commands and their outputs.
+ * 
+ * @param props the commands list, view mode, and the map of available functions.
+ * @returns the formatted history of commands and outputs in either verbose or brief mode.
+ */
 export function REPLHistory(props: REPLHistoryProps) {
 
   /**
    * A helper function that formats the result.
+   * 
    * @param output the result of running a command.
    * @returns a formatted result based on if it is a string or an array of strings.
    */

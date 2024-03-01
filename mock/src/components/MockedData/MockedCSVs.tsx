@@ -8,11 +8,13 @@ import {
 
 /**
  * A class that sets mocked CSVs to their data.
+ * 
  * @returns a map of the CSVs and their data.
  */
 
 /**
  * A function that creates a map for the loaded CSVs.
+ * 
  * @returns the map with the loaded CSVs and their data.
  */
 export function loadCSVs() {
@@ -29,6 +31,7 @@ export function loadCSVs() {
 
 /**
  * A function that creates a map for the results of search.
+ * 
  * @returns the map with the search results and their data.
  */
 export function searchCSVs() {

@@ -14,6 +14,12 @@ interface REPLInputProps {
   setMode: Dispatch<SetStateAction<string>>;
 }
 
+/**
+ * Function to return the formatted REPL Input.
+ * 
+ * @param props contains the commands list and its setter, and the mode string with its setter.
+ * @returns the html formatted code for the REPL Input box.
+ */
 export function REPLInput(props: REPLInputProps) {
   const [commandString, setCommandString] = useState<string>("");
   const functionMap = Functions();
@@ -34,6 +40,7 @@ export function REPLInput(props: REPLInputProps) {
     }
     return false;
   }
+  
   /**
    * A function that handles submitting commands.
    */
@@ -55,7 +62,7 @@ export function REPLInput(props: REPLInputProps) {
         if (setModeCommand(commandArgs)) {
           props.setCommands([
             ...props.commands,
-            [command, "Mode has been changed to " + commandArgs[0]],
+            [command, "Mode has been changed to " + commandArgs[0] +"."],
           ]);
         } else {
           props.setCommands([
@@ -69,16 +76,6 @@ export function REPLInput(props: REPLInputProps) {
       }
     }
     setCommandString("");
-  }
-  /**
-   * Function uses a regex to check if the string contains all spaces.
-   *
-   * @param str is the string to check.
-   * @returns true if all spaces, false otherwise.
-   */
-  function isStringAllSpaces(str: string): boolean {
-    // Use a regular expression to check if the string consists only of whitespace characters.
-    return /^\s*$/.test(str);
   }
 
   return (

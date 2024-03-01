@@ -31,13 +31,28 @@ export function Functions() {
     if (args[0] == undefined) {
       return "Value was not specified";
     } else {
-      if (args[1] == undefined) {//no header
-        return searchCSV.get("rowWithoutHeaders.csv");
-      } else {
-        return searchCSV.get("rowWithoutHeaders.csv");
+        if (args[1] == undefined) {
+            if (args[0] == "unfoundValue") {
+              return searchCSV.get("unfoundValue.csv");
+            } else if (file == "malformed.csv") {
+                return "Unable to search due to malformed rows."
+            }
+            else {
+            return searchCSV.get("rowWithoutHeaders.csv");
+            }
+        } else {
+            if (
+                parseInt(args[1]) < 0 ||
+                parseInt(args[1]) > loadCSV.get(file)[0].length
+            ) {
+                return "Column is out of range.";
+            } else {
+                return searchCSV.get("rowWithoutHeaders.csv");
+          }
       }
     }
   };
+
 
   myFunction.set("load", loadFunction);
   myFunction.set("view", viewFunction);

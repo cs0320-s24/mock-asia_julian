@@ -8,15 +8,54 @@ Asia Nguyen (anguyen), Julian Dhanda (jdhanda).
 20 hours.
 
 # Design Choices
+## Overall Structure
+First, index.tsx Generates a root element containing the main element App.tsx.
+
+### App.tsx
+Contains a header and LoginButton.tsx, which when clicked also contains a REPL.tsx.
+
+#### LoginButton.tsx
+Modifies the logged in boolean when clicked.
+
+#### REPL.tsx
+Builds the repl including a REPLHistory.tsx and REPLInput.tsx.
+
+##### REPLHistory.tsx
+A scrollable box that displays the command history.
+
+##### REPLInput.tsx
+A command line interface that uses a ControlledInput.
+
+###### ControlledInput.tsx
+A modified input box for the repl.
+
+## Interfacing and Functions
+
+##### REPLFunction.tsx
+An interface for functions that can be called by the REPL.
+
+##### Functions.tsx
+A function class that returns a map of the default functions.
+
+## Data Structures Used
+##### Map<string, REPLFunction>
+The Map of strings to REPLFunctions allows a more generalized calling of the different
+functions. This is leveraged in REPLInput to enable adding and removing of functions as 
+desired by the developer.
+
+##### Constants.ts
+A constants class containing a few frontend strings, and mocked csv data.
+
+##### MockedCSVs.tsx
+A class that mocks the unimplemented CSV functionality.
 
 # Errors/Bugs
-No Known Errors or Bugs.
+### No Known Errors or Bugs.
 
 # Tests
 ### Login and Mode Change
 
 ### CSV Functionality
-
 ##### Load
 
 ##### View
@@ -64,8 +103,13 @@ functions: Map<string, REPLFunction>;
 
 Where REPLFunction is described in REPLFunction.tsx
 
-This will be passed in as a parameter to the REPL object, where, by default, it will be passed into 
-REPLInput and REPLHistory seperately so they can access and use the functions.
+This will be passed in as a parameter to the REPLInput object as the parameter addCommands. This will
+add your commands to the default build in commands described above. If you would like to remove those
+commands, you will pass in the name of those commands in a list, as the parameter removeCommands to 
+REPLInput. For example, removeCommands={["view"]} will make you unable to use the view command.
+
+It attempts to remove the commands before adding the new ones, so you can override the default commands
+by providing similarly named replacements, and removing them as well.
 
 # Collaboration
 Conceptual collaboration with 32 student Gavin Dhanda (cs login: gdhanda).

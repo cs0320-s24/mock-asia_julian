@@ -24,7 +24,7 @@ export default function REPL() {
         mode={mode}
         setMode={setMode}
         addCommands={new Map<string, REPLFunction>}
-        removeCommands={["view"]}
+        removeCommands={["bananas"]}
       />
     </div>
   );

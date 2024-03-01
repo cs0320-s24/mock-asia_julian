@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { ControlledInput } from "../ControlledInput";
 import { COMMAND_BOX_LEGEND, REPL_BOX_PROMPT } from "../MockedData/Constants";
 import { Functions } from "../BackendFunctionality/Functions";
+import { REPLFunction } from "./REPLFunction";
 
 /**
  * A class that handles the REPL input.
@@ -26,6 +27,7 @@ export function REPLInput(props: REPLInputProps) {
 
   /**
    * A helper function that sets the mode variable.
+   * 
    * @param mode the arguments of the command.
    * @returns true if it was changed to a valid mode, false otherwise.
    */

@@ -13,11 +13,10 @@ import { Functions } from "../BackendFunctionality/Functions";
 export default function REPL() {
   const [myCommands, setCommands] = useState<[string, string | string[][]][]>([]);
   const [mode, setMode] = useState<string>("brief");
-  const functions = Functions();
 
   return (
     <div className="repl">
-      <REPLHistory commands={myCommands} mode={mode} functions={functions} />
+      <REPLHistory commands={myCommands} mode={mode}/>
       <div className="spacer"></div>
       <REPLInput
         commands={myCommands}

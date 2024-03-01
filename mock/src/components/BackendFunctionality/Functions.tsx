@@ -37,7 +37,7 @@ export function Functions() {
  * @returns an error message or the file to be viewed.
  */
   const viewFunction: REPLFunction = (args: string[]) => {
-    if (file == undefined) {
+    if (file == "" || file == undefined) {
       return "File was not loaded.";
     } else {
       return loadCSV.get(file);
@@ -51,6 +51,10 @@ export function Functions() {
    * @returns the appropriate error message or the row with the value.
    */
   const searchFunction: REPLFunction = (args: string[]) => {
+    if (file == "" || file == undefined) {
+      return "File was not loaded.";
+    }
+    
     if (args[0] == undefined) { //no value
       return "Value was not specified.";
     } else {

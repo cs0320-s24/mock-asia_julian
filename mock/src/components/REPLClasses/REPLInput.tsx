@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { ControlledInput } from "../ControlledInput";
 import { COMMAND_BOX_LEGEND, REPL_BOX_PROMPT } from "../MockedData/Constants";
 import { Functions } from "../BackendFunctionality/Functions";
+import { REPLFunction } from "./REPLFunction";
 
 /**
  * A class that handles the REPL input.
@@ -93,16 +94,6 @@ export function REPLInput(props: REPLInputProps) {
       }
     }
     setCommandString("");
-  }
-  /**
-   * Function uses a regex to check if the string contains all spaces.
-   *
-   * @param str is the string to check.
-   * @returns true if all spaces, false otherwise.
-   */
-  function isStringAllSpaces(str: string): boolean {
-    // Use a regular expression to check if the string consists only of whitespace characters.
-    return /^\s*$/.test(str);
   }
 
   return (

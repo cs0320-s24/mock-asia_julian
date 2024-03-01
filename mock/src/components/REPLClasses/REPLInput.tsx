@@ -37,6 +37,11 @@ export function REPLInput(props: REPLInputProps) {
     functionMap.set(key, value);
   });
 
+  // Defensive function used for testing.
+  function getFuncs(){
+    return new Map(functionMap);
+  }
+
   /**
    * A helper function that sets the mode variable.
    * 

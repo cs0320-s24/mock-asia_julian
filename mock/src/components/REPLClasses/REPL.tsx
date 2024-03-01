@@ -2,7 +2,9 @@ import { useState } from "react";
 import "../../styles/main.css";
 import { REPLHistory } from "./REPLHistory";
 import { REPLInput } from "./REPLInput";
-import { Functions } from "../BackendFunctionality/Functions";
+import { Addons } from "../../modifications/Addons";
+import { Removes } from "../../modifications/Removes";
+
 
 /**
  * A top level class for the REPL component.
@@ -22,8 +24,8 @@ export default function REPL() {
         setCommands={setCommands}
         mode={mode}
         setMode={setMode}
-        addCommands={new Map<string, REPLFunction>}
-        removeCommands={["bananas"]}
+        addCommands={Addons()}
+        removeCommands={Removes()}
       />
     </div>
   );

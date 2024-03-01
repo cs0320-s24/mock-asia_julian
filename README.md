@@ -61,6 +61,7 @@ L3) Assert that there is a history element after login.
 
 ##### Commands
 C1) Try to run a random command.
+C2) Try to run an addon command.
 
 ##### Mode Switch
 M1) Switch mode with no history.

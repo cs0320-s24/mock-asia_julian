@@ -148,7 +148,7 @@ test("M3 -> Mode of the history is changed as well.", async ({ page }) => {
 
 /////////////////////////// LOAD TESTING ///////////////////////////
 
-test("L1 -> Load basic CSV file", async ({ page }) => {
+test("L1 -> Load basic CSV file.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   //load basic csv
@@ -172,7 +172,7 @@ test("L1 -> Load basic CSV file", async ({ page }) => {
   expect(secondChild).toEqual(" JulianYellowMonkeyBananasAsiaPinkCatNerds ");
 });
 
-test("L2 -> Load CSV file that doesn't exist", async ({ page }) => {
+test("L2 -> Load CSV file that doesn't exist.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   //load a file that doesn't exist
@@ -186,7 +186,7 @@ test("L2 -> Load CSV file that doesn't exist", async ({ page }) => {
   expect(firstChild).toEqual(" Invalid file. ");
 });
 
-test("L3 -> Load with no file provided", async ({ page }) => {
+test("L3 -> Load with no file provided.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   //load with no file
@@ -200,7 +200,7 @@ test("L3 -> Load with no file provided", async ({ page }) => {
   expect(firstChild).toEqual(" Invalid file. ");
 });
 
-test("L4 -> Load not accessible filepath", async ({ page }) => {
+test("L4 -> Load not accessible filepath.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   //loading file outside of data directory
@@ -214,7 +214,7 @@ test("L4 -> Load not accessible filepath", async ({ page }) => {
   expect(firstChild).toEqual(" Invalid file. ");
 });
 
-test("L5 -> Load given extra arguments", async ({ page }) => {
+test("L5 -> Load given extra arguments.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   //load with extra arguments
@@ -229,7 +229,7 @@ test("L5 -> Load given extra arguments", async ({ page }) => {
   expect(firstChild).toEqual(" The file children.csv was loaded! ");
 });
 
-test("L6 -> Load view load view", async ({ page }) => {
+test("L6 -> Load view load view.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   //load first csv
@@ -267,7 +267,7 @@ test("L6 -> Load view load view", async ({ page }) => {
   expect(fourthChild).toEqual(" 0123kirbyqorbqorvettetoothy ");
 });
 
-test("L7-S8 -> Load malformed CSV then search it", async ({ page }) => {
+test("L7-S8 -> Load malformed CSV then search it.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   //load malformed csv
@@ -291,7 +291,7 @@ test("L7-S8 -> Load malformed CSV then search it", async ({ page }) => {
   expect(secondChild).toEqual(" Unable to search due to malformed rows. ");
 });
 
-test("L8-V4 -> Load and view empty CSV", async ({ page }) => {
+test("L8-V4 -> Load and view empty CSV.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   //load an empty csv
@@ -317,7 +317,7 @@ test("L8-V4 -> Load and view empty CSV", async ({ page }) => {
 
 /////////////////////////// VIEW TESTING ///////////////////////////
 
-test("V1 -> View normal CSV", async ({ page }) => {
+test("V1 -> View normal CSV.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   //load normal csv
@@ -340,7 +340,7 @@ test("V1 -> View normal CSV", async ({ page }) => {
   expect(secondChild).toEqual(" 0123kirbyqorbqorvettetoothy ");
 });
 
-test("V2 -> View malformed CSV", async ({ page }) => {
+test("V2 -> View malformed CSV.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   //load a malformed csv
@@ -364,7 +364,7 @@ test("V2 -> View malformed CSV", async ({ page }) => {
   expect(secondChild).toEqual(" redblue grass ");
 });
 
-test("V2 -> View with no CSV loaded", async ({ page }) => {
+test("V2 -> View with no CSV loaded.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   //view without loading first
@@ -380,7 +380,7 @@ test("V2 -> View with no CSV loaded", async ({ page }) => {
 
 /////////////////////////// SEARCH TESTING ///////////////////////////
 
-test("S1 -> Search by column name", async ({ page }) => {
+test("S1 -> Search by column name.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   await page.getByLabel("Command Prompt").fill("load withHeaders.csv");
@@ -402,7 +402,7 @@ test("S1 -> Search by column name", async ({ page }) => {
   expect(secondChild).toEqual(" Asia20studentshe/her ");
 });
 
-test("S2 -> Search by column id", async ({ page }) => {
+test("S2 -> Search by column id.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   await page.getByLabel("Command Prompt").fill("load withHeaders.csv");
@@ -424,7 +424,7 @@ test("S2 -> Search by column id", async ({ page }) => {
   expect(secondChild).toEqual(" Asia20studentshe/her ");
 });
 
-test("S3 -> Search by negative column", async ({ page }) => {
+test("S3 -> Search by negative column.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   await page.getByLabel("Command Prompt").fill("load partners.csv");
@@ -446,7 +446,7 @@ test("S3 -> Search by negative column", async ({ page }) => {
   expect(secondChild).toEqual(" Column is out of range. ");
 });
 
-test("S4 -> Search by out of range column", async ({ page }) => {
+test("S4 -> Search by out of range column.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   await page.getByLabel("Command Prompt").fill("load partners.csv");
@@ -468,7 +468,7 @@ test("S4 -> Search by out of range column", async ({ page }) => {
   expect(secondChild).toEqual(" Column is out of range. ");
 });
 
-test("S5 -> Search with no CSV loaded", async ({ page }) => {
+test("S5 -> Search with no CSV loaded.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   //search without loading first
@@ -481,7 +481,7 @@ test("S5 -> Search with no CSV loaded", async ({ page }) => {
   expect(secondChild).toEqual(" File was not loaded. ");
 });
 
-test("S6 -> Search with no results", async ({ page }) => {
+test("S6 -> Search with no results.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   await page.getByLabel("Command Prompt").fill("load partners.csv");
@@ -504,7 +504,7 @@ test("S6 -> Search with no results", async ({ page }) => {
   expect(secondChild).toEqual(" Could not find specified value. ");
 });
 
-test("S7 -> Search string with spaces", async ({ page }) => {
+test("S7 -> Search string with spaces.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   await page.getByLabel("Command Prompt").fill("load partners.csv");
@@ -526,7 +526,7 @@ test("S7 -> Search string with spaces", async ({ page }) => {
   expect(secondChild).toEqual(" Not a valid column. ");
 });
 
-test("S9 -> Search with no value", async ({ page }) => {
+test("S9 -> Search with no value.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   await page.getByLabel("Command Prompt").fill("load partners.csv");
@@ -550,7 +550,7 @@ test("S9 -> Search with no value", async ({ page }) => {
 });
 
 
-test('L1-V1-S1 x2: load search view twice', async ({ page }) => {
+test('L1-V1-S1 x2: load search view twice.', async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
 
@@ -609,6 +609,32 @@ test('L1-V1-S1 x2: load search view twice', async ({ page }) => {
     return history?.children[5]?.textContent;
   });
   expect(sixthChild).toEqual(" Could not find specified value. ");
+})
 
+/////////////////////////// FUNCTION ADDON TESTING ///////////////////////////
 
+test("C2 -> Addon function has working output.", async ({ page, }) => {
+  // Step 1: Navigate to a URL
+  await page.goto("http://localhost:8000/");
+  await page.getByLabel("Login").click();
+
+  // run addon bananas
+  await page.getByLabel("Command Prompt").fill("bananas");
+  await page.getByRole("button", { name: "Submit Command!" }).click();
+
+  const child = await page.evaluate(() => {
+    const history = document.querySelector(".repl-history");
+    return history?.children[0]?.textContent;
+  });
+  expect(child).toEqual(" I am going bananas! ");
+
+  // change mode
+  await page.getByLabel("Command Prompt").fill("mode verbose");
+  await page.getByRole("button", { name: "Submit Command!" }).click();
+
+  const newChild = await page.evaluate(() => {
+    const history = document.querySelector(".repl-history");
+    return history?.children[0]?.textContent;
+  });
+  expect(newChild).toEqual("Command: bananas Output: I am going bananas!");
 })

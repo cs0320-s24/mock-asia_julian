@@ -9,6 +9,7 @@ export const COMMAND_BOX_LEGEND = "Enter a Command!"
 
 export const MOCK_CSV_1: string[][] = [["Julian", "Yellow", "Monkey", "Bananas"], ["Asia", "Pink", "Cat", "Nerds"]]
 export const MOCK_CSV_2: string[][]= [["0", "1", "2", "3"], ["kirby", "qorb", "qorvette", "toothy"]]
+export const MOCK_CSV_3: number[][] = [[0,1,2,3],[4,5,6,7], [8,9,10,11]]
 export const MOCK_CSV_MALFORMED: string[][] = [["red", "blue", " "], ["grass"]];
 export const MOCK_CSV_SEARCH_NO_HEADERS: string [][] = [["Julian", "Yellow", "Monkey", "Bananas"]];
 export const MOCK_CSV_UNFOUND_VALUE: string = "Could not find specified value.";

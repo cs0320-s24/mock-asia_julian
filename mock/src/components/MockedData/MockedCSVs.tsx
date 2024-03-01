@@ -1,6 +1,7 @@
 import {
   MOCK_CSV_1,
   MOCK_CSV_2,
+  MOCK_CSV_3,
   MOCK_CSV_MALFORMED,
   MOCK_CSV_SEARCH_NO_HEADERS,
   MOCK_CSV_UNFOUND_VALUE,
@@ -21,6 +22,8 @@ export function loadCSVs() {
   myCSVs.set("partners.csv", MOCK_CSV_1);
 
   myCSVs.set("children.csv", MOCK_CSV_2);
+
+  myCSVs.set("numbers.csv", MOCK_CSV_3);
 
   myCSVs.set("malformed.csv", MOCK_CSV_MALFORMED);
 

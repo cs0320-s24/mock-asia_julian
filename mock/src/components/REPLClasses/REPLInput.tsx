@@ -13,6 +13,8 @@ interface REPLInputProps {
   setCommands: Dispatch<SetStateAction<[string, string | string[][]][]>>;
   mode: string;
   setMode: Dispatch<SetStateAction<string>>;
+  addCommands: Map<string, REPLFunction>;
+  removeCommands: string[];
 }
 
 /**
@@ -24,6 +26,16 @@ interface REPLInputProps {
 export function REPLInput(props: REPLInputProps) {
   const [commandString, setCommandString] = useState<string>("");
   const functionMap = Functions();
+
+  // Removes the unwanted functions.
+  for (let i = 0; i < props.removeCommands.length; i++) {
+    functionMap.delete(props.removeCommands[i]);
+  }
+
+  // Adds the extra functions.
+  props.addCommands.forEach((value, key) => {
+    functionMap.set(key, value);
+  });
 
   /**
    * A helper function that sets the mode variable.

@@ -23,6 +23,8 @@ export default function REPL() {
         setCommands={setCommands}
         mode={mode}
         setMode={setMode}
+        addCommands={new Map<string, REPLFunction>}
+        removeCommands={["view"]}
       />
     </div>
   );

@@ -1,9 +1,12 @@
-import "../styles/main.css";
+import "../../styles/main.css";
 import { Dispatch, SetStateAction, useState } from "react";
 import { ControlledInput } from "../ControlledInput";
 import { COMMAND_BOX_LEGEND, REPL_BOX_PROMPT } from "../MockedData/Constants";
 import { Functions } from "../BackendFunctionality/Functions";
 
+/**
+ * A class that handles the REPL input.
+ */
 interface REPLInputProps {
   commands: [string, string | string[][]][];
   setCommands: Dispatch<SetStateAction<[string, string | string[][]][]>>;
@@ -15,6 +18,11 @@ export function REPLInput(props: REPLInputProps) {
   const [commandString, setCommandString] = useState<string>("");
   const functionMap = Functions();
 
+  /**
+   * A helper function that sets the mode variable.
+   * @param mode the arguments of the command.
+   * @returns true if it was changed to a valid mode, false otherwise.
+   */
   function setModeCommand(mode: string[]): boolean {
     if (mode[0] == "brief") {
       props.setMode("brief");
@@ -26,19 +34,24 @@ export function REPLInput(props: REPLInputProps) {
     }
     return false;
   }
-
+  /**
+   * A function that handles submitting commands.
+   */
   function handleSubmit() {
     const commandInput = commandString.trim().split(" ");
     const command = commandInput[0];
     const commandArgs = commandInput.slice(1);
 
     if (command == undefined) {
+      //put in an actual command
       props.setCommands([...props.commands, [command, "Invalid command"]]);
     } else {
       if (functionMap.get(command) != undefined) {
+        //if the command exists in the function map
         const result = functionMap.get(command)(commandArgs);
         props.setCommands([...props.commands, [command, result]]);
       } else if (command == "mode") {
+        //if the command was to change modes
         if (setModeCommand(commandArgs)) {
           props.setCommands([
             ...props.commands,
@@ -51,6 +64,7 @@ export function REPLInput(props: REPLInputProps) {
           ]);
         }
       } else {
+        //if the command isn't valid
         props.setCommands([...props.commands, [command, "Command not found."]]);
       }
     }

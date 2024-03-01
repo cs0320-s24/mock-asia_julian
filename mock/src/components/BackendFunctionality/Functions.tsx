@@ -30,12 +30,12 @@ export function Functions() {
     }
   };
 
-/**
- * A function that handles viewing the file that was previously loaded.
- * 
- * @param args arguments to the function, for view specifically there are none.
- * @returns an error message or the file to be viewed.
- */
+  /**
+   * A function that handles viewing the file that was previously loaded.
+   * 
+   * @param args arguments to the function, for view specifically there are none.
+   * @returns an error message or the file to be viewed.
+   */
   const viewFunction: REPLFunction = (args: string[]) => {
     if (file == "" || file == undefined) {
       return "File was not loaded.";

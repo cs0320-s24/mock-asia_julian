@@ -70,23 +70,23 @@ export function REPLInput(props: REPLInputProps) {
       if (functionMap.get(command) != undefined) {
         //if the command exists in the function map
         const result = functionMap.get(command)(commandArgs);
-        props.setCommands([...props.commands, [command, result]]);
+        props.setCommands([...props.commands, [commandString.trim(), result]]);
       } else if (command == "mode") {
         //if the command was to change modes
         if (setModeCommand(commandArgs)) {
           props.setCommands([
             ...props.commands,
-            [command, "Mode has been changed to " + commandArgs[0] +"."],
+            [commandString.trim(), "Mode has been changed to " + commandArgs[0] +"."],
           ]);
         } else {
           props.setCommands([
             ...props.commands,
-            [command, "Mode specified does not exist."],
+            [commandString.trim(), "Mode specified does not exist."],
           ]);
         }
       } else {
         //if the command isn't valid
-        props.setCommands([...props.commands, [command, "Command not found."]]);
+        props.setCommands([...props.commands, [commandString.trim(), "Command not found."]]);
       }
     }
     setCommandString("");

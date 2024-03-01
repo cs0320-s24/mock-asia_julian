@@ -55,40 +55,43 @@ A class that mocks the unimplemented CSV functionality.
 # Tests
 ### Utility Tests
 ##### Login
-- Load the page and assert no REPL history or input elements.
-- Assert that you cannot enter REPL input before logging in.
-- Assert that there are history and input elements after login.
+L1) Load the page and assert Login button and no input element.
+L2) Assert that you can enter REPL input after logging in.
+L3) Assert that there is a history element after login.
+
+##### Commands
+C1) Try to run a random command.
 
 ##### Mode Switch
-- Switch mode with no history.
-- Switch mode to current mode.
-- Switch mode after load and view.
+M1) Switch mode with no history.
+M2) Switch mode to current mode.
+M3) Switch mode with history items.
 
 ### CSV Functionality
 ##### Load
-- Load basic functionality.
-- Load if CSV doesn't exist.
-- Load with no filepath provided.
-- Load not accessible filepath.
-- Load given extra arguments.
-- Load -> view -> load-new -> view.
-- Load malformed CSV.
-- Load empty CSV.
+L1) Load basic functionality.
+L2) Load if CSV doesn't exist.
+L3) Load with no filepath provided.
+L4) Load not accessible filepath.
+L5) Load given extra arguments.
+L6) Load -> view -> load-new -> view.
+L7) Load malformed CSV.
+L8) Load empty CSV.
 
 ##### View
-- View normal CSV.
-- View malformed CSV.
-- View with mo CSV loaded.
-- View empty CSV.
+V1) View normal CSV.
+V2) View malformed CSV.
+V3) View with mo CSV loaded.
+V4) View empty CSV.
 
 ##### Search
-- Search by column name.
-- Search by colmn id.
-- Search with any column.
-- Search with no CSV loaded.
-- Search with no results.
-- Search a string with spaces.
-- Search malformed CSV.
+S1) Search by column name.
+S2) Search by colmn id.
+S3) Search with any column.
+S4) Search with no CSV loaded.
+S5) Search with no results.
+S6) Search a string with spaces.
+S7) Search malformed CSV.
 
 # How to
 ### To Run Page

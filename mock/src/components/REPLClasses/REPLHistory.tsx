@@ -31,7 +31,7 @@ export function REPLHistory(props: REPLHistoryProps) {
       return output;
     } else { //array of strings
       return (
-        <table className="table-container">
+        <table className="table-container" aria-label="table">
           <tbody>
             {output.map((row) => (
               <tr>
@@ -48,7 +48,7 @@ export function REPLHistory(props: REPLHistoryProps) {
 
   if (props.mode == "brief") { //brief mode
     return (
-      <div className="repl-history">
+      <div className="repl-history" aria-label="history">
         {props.commands.map((item, index) => (
           <p> {result(item[1])} </p>
         ))}
@@ -56,7 +56,7 @@ export function REPLHistory(props: REPLHistoryProps) {
     );
   } else if (props.mode == "verbose") { //verbose mode
     return (
-      <div className="repl-history">
+      <div className="repl-history" aria-label ="history">
         {props.commands.map((item, index) => (
           <p>
             <b>{"Command:"}</b> {item[0]} <br></br>
@@ -66,6 +66,10 @@ export function REPLHistory(props: REPLHistoryProps) {
       </div>
     );
   } else {
-    return <div className="repl-history">Invalid mode: {props.mode}</div>;
+    return (
+      <div className="repl-history" aria-label="history">
+        Invalid mode: {props.mode}
+      </div>
+    );
   }
 }

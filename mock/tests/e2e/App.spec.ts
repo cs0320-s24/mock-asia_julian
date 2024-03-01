@@ -98,7 +98,7 @@ test("M1 -> Switch to verbose mode with no history.", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   await page.getByLabel("Command Prompt").fill("mode verbose");
-  await page.getByRole("button", { name: "Submit Command!" }).click();
+  await page.getByLabel("Submit Command!").click();
 
   // you can use page.evaulate to grab variable content from the page for more complex assertions
   const firstChild = await page.evaluate(() => {

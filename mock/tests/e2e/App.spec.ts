@@ -504,27 +504,27 @@ test("S6 -> Search with no results", async ({ page }) => {
   expect(secondChild).toEqual(" Could not find specified value. ");
 });
 
-// test("S7 -> Search string with spaces", async ({ page }) => {
-//   await page.goto("http://localhost:8000/");
-//   await page.getByLabel("Login").click();
-//   await page.getByLabel("Command Prompt").fill("load partners.csv");
-//   await page.getByRole("button", { name: "Submit Command!" }).click();
+test("S7 -> Search string with spaces", async ({ page }) => {
+  await page.goto("http://localhost:8000/");
+  await page.getByLabel("Login").click();
+  await page.getByLabel("Command Prompt").fill("load partners.csv");
+  await page.getByRole("button", { name: "Submit Command!" }).click();
 
-//   const firstChild = await page.evaluate(() => {
-//     const history = document.querySelector(".repl-history");
-//     return history?.children[0]?.textContent;
-//   });
+  const firstChild = await page.evaluate(() => {
+    const history = document.querySelector(".repl-history");
+    return history?.children[0]?.textContent;
+  });
 
-//   expect(firstChild).toEqual(" The file partners.csv was loaded! ");
+  expect(firstChild).toEqual(" The file partners.csv was loaded! ");
 
-//   await page.getByLabel("Command Prompt").fill("search unfoundValue");
-//   await page.getByRole("button", { name: "Submit Command!" }).click();
-//   const secondChild = await page.evaluate(() => {
-//     const history = document.querySelector(".repl-history");
-//     return history?.children[1]?.textContent;
-//   });
-//   expect(secondChild).toEqual(" Could not find specified value. ");
-// });
+  await page.getByLabel("Command Prompt").fill("search Julian Dhanda");
+  await page.getByRole("button", { name: "Submit Command!" }).click();
+  const secondChild = await page.evaluate(() => {
+    const history = document.querySelector(".repl-history");
+    return history?.children[1]?.textContent;
+  });
+  expect(secondChild).toEqual(" Not a valid column. ");
+});
 
 test("S9 -> Search with no value", async ({ page }) => {
   await page.goto("http://localhost:8000/");

@@ -69,6 +69,8 @@ export function Functions() {
       } else { //header
         if (parseInt(args[1]) < 0 || parseInt(args[1]) > loadCSV.get(file)[0].length) { //check range
           return "Column is out of range.";
+        } else if (isNaN(parseInt(args[1])) && !loadCSV.get(file)[0].includes(args[1])) {
+          return "Not a valid column.";
         } else {
           return searchCSV.get("withHeaders.csv");
         }

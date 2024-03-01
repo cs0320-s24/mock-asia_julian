@@ -5,7 +5,7 @@ import { LoginButton } from "./LoginButton";
 import REPL from "./REPLClasses/REPL";
 
 /**
- * This is the highest level component!
+ * This is the highest level component! If logged in, includes the repl element.
  */
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);

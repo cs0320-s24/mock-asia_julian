@@ -6,6 +6,7 @@ import { useEffect } from "react";
 
 /**
  * A class that includes all the built in functions.
+ * 
  * @returns a map that maps the name of the function to the function itself.
  */
 export function Functions() {
@@ -16,6 +17,7 @@ export function Functions() {
 
   /**
    * A function that handles loading files.
+   * 
    * @param args the file name.
    * @returns a success or error message.
    */
@@ -28,14 +30,15 @@ export function Functions() {
     }
   };
 
-/**
- * A function that handles viewing the file that was previously loaded.
- * @param args arguments to the function, for view specifically there are none.
- * @returns an error message or the file to be viewed.
- */
+  /**
+   * A function that handles viewing the file that was previously loaded.
+   * 
+   * @param args arguments to the function, for view specifically there are none.
+   * @returns an error message or the file to be viewed.
+   */
   const viewFunction: REPLFunction = (args: string[]) => {
-    if (file == undefined) {
-      return "File was not loaded";
+    if (file == "" || file == undefined) {
+      return "File was not loaded.";
     } else {
       return loadCSV.get(file);
     }
@@ -43,12 +46,17 @@ export function Functions() {
 
   /**
    * A function that handles searching through a file for a specified value.
+   * 
    * @param args the value to be searched for and/or the column to search through.
    * @returns the appropriate error message or the row with the value.
    */
   const searchFunction: REPLFunction = (args: string[]) => {
+    if (file == "" || file == undefined) {
+      return "File was not loaded.";
+    }
+    
     if (args[0] == undefined) { //no value
-      return "Value was not specified";
+      return "Value was not specified.";
     } else {
       if (args[1] == undefined) { //no header
         if (args[0] == "unfoundValue") {
@@ -62,7 +70,7 @@ export function Functions() {
         if (parseInt(args[1]) < 0 || parseInt(args[1]) > loadCSV.get(file)[0].length) { //check range
           return "Column is out of range.";
         } else {
-          return searchCSV.get("rowWithoutHeaders.csv");
+          return searchCSV.get("withHeaders.csv");
         }
       }
     }

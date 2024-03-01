@@ -46,6 +46,8 @@ button{
     font-weight: bold;
     color: white;
 }
+
+  /* Stying of the REPL input box */
 input{
     color: white;
     border-color: white;
@@ -66,6 +68,7 @@ input:focus{
     margin-bottom: 20px; /* Adjust the value as needed */
   }
 
+  /* For the "Enter a Command" box outline */
 fieldset{
     border-radius: 10px;
     border-color: white;
@@ -84,7 +87,7 @@ hr{
     border-style: solid;
 }
 
-/* Table container */
+  /* Table container */
 .table-container {
     padding-top: 10px;
     padding-bottom: 0px;
@@ -98,7 +101,8 @@ hr{
     border-collapse: collapse;
 }
   
-  /* Table rows */
+  /* Alternating table rows via ChatGPT - Works by individually treating the nth element,
+  in this case specified as even or odd */
 .table-container tr:nth-child(even) {
     background-color: #53102b; /* Alternating row color */
 }

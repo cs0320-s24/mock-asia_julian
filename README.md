@@ -53,14 +53,42 @@ A class that mocks the unimplemented CSV functionality.
 ### No Known Errors or Bugs.
 
 # Tests
-### Login and Mode Change
+### Utility Tests
+##### Login
+- Load the page and assert no REPL history or input elements.
+- Assert that you cannot enter REPL input before logging in.
+- Assert that there are history and input elements after login.
+
+##### Mode Switch
+- Switch mode with no history.
+- Switch mode to current mode.
+- Switch mode after load and view.
 
 ### CSV Functionality
 ##### Load
+- Load basic functionality.
+- Load if CSV doesn't exist.
+- Load with no filepath provided.
+- Load not accessible filepath.
+- Load given extra arguments.
+- Load -> view -> load-new -> view.
+- Load malformed CSV.
+- Load empty CSV.
 
 ##### View
+- View normal CSV.
+- View malformed CSV.
+- View with mo CSV loaded.
+- View empty CSV.
 
 ##### Search
+- Search by column name.
+- Search by colmn id.
+- Search with any column.
+- Search with no CSV loaded.
+- Search with no results.
+- Search a string with spaces.
+- Search malformed CSV.
 
 # How to
 ### To Run Page
@@ -93,6 +121,9 @@ specified <column> which can either be an index or header name.
 Click Sign Out when done, or to clear the history.
 
 ### To Run Tests
+Navigate into the mock directory.
+
+Run the command "npm run test" and view the results in the terminal.
 
 ### To Import Alternative Functions as a Developer
 You will need to create your own Map mapping strings to your own functions which must

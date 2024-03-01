@@ -29,18 +29,6 @@ export function REPLInput(props: REPLInputProps) {
     return false;
   }
 
-  function load() {
-    const file = props.commands[0][1];
-    return (
-      <div className="repl-history">
-        <text className="history-item">
-          {commandString}
-        </text>
-
-      </div>
-    )
-    //get mapped dataset
-  }
 
   function handleSubmit() {
     const commandInput = commandString.trim().split(" ");
@@ -54,8 +42,12 @@ export function REPLInput(props: REPLInputProps) {
         const result = functionMap.get(command)(commandArgs);
         props.setCommands([...props.commands, [command, result]]);
       } else if (command == "mode") {
-        setModeCommand(commandArgs);
-        props.setCommands([...props.commands, [command, "Mode has been changed to " + commandArgs[0]]])
+        if (setModeCommand(commandArgs)) {
+           props.setCommands([
+             ...props.commands, [command, "Mode has been changed to " + commandArgs[0]]]);
+        } else {
+          props.setCommands([...props.commands,[command, "Mode specified does not exist."]]);
+        }
        
       }
       else {

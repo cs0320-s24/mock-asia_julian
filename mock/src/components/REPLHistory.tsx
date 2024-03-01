@@ -1,5 +1,4 @@
 import "../styles/main.css";
-import { MockedSource } from "./MockedSource";
 import { REPLFunction } from "./REPLFunction";
 
 interface REPLHistoryProps {

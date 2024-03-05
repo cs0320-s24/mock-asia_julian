@@ -1,0 +1,133 @@
+/*
+  This is a reasonable starting point for the CSS in Mock.
+  Positioning in CSS can sometimes be annoying to manage, so we've opted to 
+  give you this starter CSS. Feel free to modify it as you wish, though.
+*/
+
+.repl {
+    position:relative;
+    min-height:95vh;    
+}
+
+.repl-history {     
+    padding: 10px; 
+    height:55vh;   
+    margin: auto;
+    display: block;
+    overflow: scroll;   
+    background-color: #b3284a;
+    border-radius: 20px; 
+    border-color: #ff99bb;
+    border-width: 5px;
+    border-style: solid;
+}
+
+.history-item{
+    font-weight: bold;
+}
+
+.repl-input {        
+    margin: auto;    
+    height:10vh;
+}
+.repl-command-box {
+    width: 90%;            
+    margin: auto;
+    display: block;
+    border-radius: 5px;
+    background-color: #b3284a;
+    padding: 5px;
+    border-color: white;
+    
+}
+button{
+    margin: auto;
+    display: block;
+    font-weight: bold;
+    color: white;
+}
+
+  /* Stying of the REPL input box */
+input{
+    color: white;
+    border-color: white;
+    outline: none;
+    transition: outline 0.3s;
+    font-weight: bold;
+}
+input::placeholder{
+    color: #ffccee;
+    padding-left: 5px;
+    font-weight: bold;
+}
+input:focus{
+    outline: 3px solid white;
+    font-weight: bold;
+}
+.spacer {
+    margin-bottom: 20px; /* Adjust the value as needed */
+  }
+
+  /* For the "Enter a Command" box outline */
+fieldset{
+    border-radius: 10px;
+    border-color: white;
+    border-width: 6px;
+    border-style: double;
+}
+legend{
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+}
+
+hr{
+    border-width:  10px;
+    border-style: solid;
+}
+
+  /* Table container */
+.table-container {
+    padding-top: 10px;
+    padding-bottom: 0px;
+    width: 80%; /* Adjust width as needed */
+    margin: 0 auto; /* Center the table horizontally */
+}
+  
+  /* Table */
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+  
+  /* Alternating table rows via ChatGPT - Works by individually treating the nth element,
+  in this case specified as even or odd */
+.table-container tr:nth-child(even) {
+    background-color: #53102b; /* Alternating row color */
+}
+.table-container tr:nth-child(odd) {
+    background-color: #a60f35; /* Alternating row color */
+}
+  
+  /* Table cells */
+.table-container td,
+.table-container th {
+    padding: 8px;
+    text-align: left;
+    border-radius: 10px; /* Rounded edges */
+    border-style: solid;
+    border-width: 0cm;
+    border-color: #e0e0e0; /* Hover row color */
+
+}
+  
+  /* Header cells */
+.table-container th {
+    background-color: #ffccee; /* Header row background color */
+}
+  
+  /* Hover effect */
+.table-container tr:hover {
+    background-color: #3b0919;
+}
